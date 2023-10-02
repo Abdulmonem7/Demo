@@ -1,0 +1,39 @@
+<script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+<div id="qrcode"></div>
+<script>
+  // Assuming you have access to the 'doc' object with a 'name' property
+  var doc = {
+    name: "{{doc.name}}" // This will be replaced with the actual value dynamically
+  };
+
+  // Fetch the 'doc.name' value dynamically (e.g., through an API request)
+  // Replace this with your actual code to fetch the 'doc.name'
+  // Example: You can fetch it through an API call
+  // fetch('your_api_endpoint_here')
+  //   .then(response => response.json())
+  //   .then(data => {
+  //     doc.name = data.name; // Update the 'doc.name' with the fetched value
+  //     generateQRCode();
+  //   })
+  //   .catch(error => console.error(error));
+
+  // Function to generate the QR code with the dynamic 'doc.name' value
+  function generateQRCode() {
+    // Construct the URL
+    var baseURL = "https://prime-dlveen.frappe.cloud/app/sales-invoice/";
+    var qrData =  doc.name;
+
+    // Get a reference to the HTML element where you want to display the QR code
+    var qrcodeContainer = document.getElementById("qrcode");
+
+    // Create a QRCode object
+    var qrcode = new QRCode(qrcodeContainer, {
+      text: qrData,
+      width: 128,
+      height: 128,
+    });
+  }
+
+  // Call the function to generate the QR code with the dynamically fetched 'doc.name'
+  generateQRCode();
+</script>
